@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                     separator: '\n'
                 },
                 files: {
-                    'tmp/': 'modules/**'
+                    'tmp/': '/modules/**'
                 }
             }
         },
