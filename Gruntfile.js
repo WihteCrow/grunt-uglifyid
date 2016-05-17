@@ -8,8 +8,6 @@
 
 'use strict';
 
-var uglify = require('uglify');
-
 module.exports = function (grunt) {
 
     // Project configuration.
