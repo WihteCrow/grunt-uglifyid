@@ -8,8 +8,8 @@
 
 'use strict';
 
-function addId(id, str) {
-    var a = 'define(\'' + id + '\', ';
+function addId(id, str, options) {
+    var a = 'define(\'' + options.root + id + '\', ';
     var reg = /define\(/gi;
     return str.replace(reg, a);
 }
@@ -38,7 +38,7 @@ module.exports = function (grunt) {
                 }
             }).map(function (filepath) {
                 // write file
-                grunt.file.write(f.dest + filepath, addId(filepath, grunt.file.read(filepath)));
+                grunt.file.write(f.dest + filepath, addId(filepath, grunt.file.read(filepath), options));
             });
 
 

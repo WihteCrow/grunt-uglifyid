@@ -1,6 +1,6 @@
 # grunt-uglifyid
 
-> The best Grunt plugin ever.
+> processing module dependency id.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.5`
@@ -37,46 +37,39 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.root
 Type: `String`
-Default value: `',  '`
+Default value: `''`
 
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
+A string value that is dependent on the root directory.
 
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+In this example, the default options are used to do something with whatever. So if the `testing` file has the content `define(function(){})`, the generated result would be `define(PATH(id), function(){})`
 
 ```js
 grunt.initConfig({
   uglifyid: {
     options: {},
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'tmp/': ['test/expected/*.js', 'test/expected/*/*.js'],
     },
   },
 });
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, custom options are used to do something else with whatever else. So if the `test/expected/a.js` file has the content `define(function(){})`, the generated result in this case would be `define('tmp/test/expected/a.js', function(){})`
 
 ```js
 grunt.initConfig({
   uglifyid: {
     options: {
-      separator: ': ',
-      punctuation: ' !!!',
+      root: 'tmp/',
     },
     files: {
-      'dest/default_options': ['src/testing', 'src/123'],
+      'tmp/': ['test/expected/*.js', 'test/expected/*/*.js'],
     },
   },
 });
@@ -86,4 +79,5 @@ grunt.initConfig({
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+- 2016-05-19   v0.1.4   update readme.md and test.

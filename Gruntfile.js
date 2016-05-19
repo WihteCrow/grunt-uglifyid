@@ -30,12 +30,12 @@ module.exports = function (grunt) {
 
         // Configuration to be run (and then tested).
         uglifyid: {
-            custom_options: {
+            test: {
                 options: {
-                    separator: '\n'
+                    'root': 'tmp/'
                 },
                 files: {
-                    'tmp/': '/modules/**'
+                    'tmp/': ['test/expected/*.js', 'test/expected/*/*.js']
                 }
             }
         },
@@ -57,10 +57,7 @@ module.exports = function (grunt) {
 
     // Whenever the "test" task is run, first clean the "tmp" dir, then run this
     // plugin's task(s), then test the result.
-    grunt.registerTask('test', ['clean', 'uglifyid', 'nodeunit']);
-
-    // By default, lint and run all tests.
-    grunt.registerTask('default', ['uglifyid:custom_options']);
+    grunt.registerTask('test', ['uglifyid']);
     grunt.registerTask('clean', ['clean']);
 
 };
