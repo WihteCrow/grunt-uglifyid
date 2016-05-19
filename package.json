@@ -1,7 +1,7 @@
 {
   "name": "grunt-uglifyid",
-  "description": "The best Grunt plugin ever.",
-  "version": "0.1.4",
+  "description": "Processing module dependency id.",
+  "version": "0.1.5",
   "homepage": "https://github.com/WihteCrow/grunt-uglifyid",
   "author": {
     "name": "crow",
